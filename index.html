@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heavy-Ion Collision Phenomenology Journal Club — Winter 2026</title>
+
+  <style>
+    :root{
+      --bg1:#eaf3ff;
+      --bg2:#f6fbff;
+      --card:rgba(255,255,255,0.78);
+      --text:#0b1b33;
+      --muted:#3f5878;
+      --accent:#2b6cb0;
+      --accent2:#1e4f86;
+      --border:rgba(11,27,51,0.15);
+      --shadow: 0 10px 30px rgba(11,27,51,0.12);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      line-height:1.6;
+      background:
+        linear-gradient(rgba(234,243,255,0.88), rgba(246,251,255,0.88)),
+        url("chun.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .wrap{max-width:1050px;margin:0 auto;padding:24px;}
+
+    header{padding:54px 0 16px;}
+
+    .title{
+      font-size:clamp(28px, 4vw, 44px);
+      line-height:1.15;
+      margin:0 0 10px;
+      letter-spacing:-0.02em;
+    }
+
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:clamp(14px, 2vw, 18px);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap:18px;
+      margin-top:22px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr;}
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:0.01em;
+    }
+
+    p{margin:0 0 12px;}
+    .muted{color:var(--muted)}
+    ul{margin:10px 0 0 18px;}
+
+    .info{display:grid;gap:10px;margin-top:8px;}
+
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border:1px dashed rgba(11,27,51,0.22);
+      border-radius:14px;
+      background: rgba(255,255,255,0.55);
+    }
+
+    .badge{
+      flex:0 0 auto;
+      font-size:12px;
+      font-weight:700;
+      color:white;
+      background:var(--accent);
+      padding:3px 10px;
+      border-radius:999px;
+      margin-top:2px;
+      letter-spacing:0.02em;
+    }
+
+    /* Links */
+    a{color:var(--accent);text-decoration:none;font-weight:600}
+    a:hover{text-decoration:underline}
+    .smalllink{font-weight:600;color:var(--accent2)}
+    .smalllink:hover{color:var(--accent);}
+
+    /* Table + controls */
+    .section{margin-top:18px;}
+
+    .toolbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin:0 0 10px;
+    }
+
+    .toolbar-left{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .btn{
+      appearance:none;
+      border:1px solid rgba(43,108,176,0.35);
+      background: rgba(43,108,176,0.12);
+      color: var(--accent2);
+      padding:8px 12px;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .btn:hover{background: rgba(43,108,176,0.18);}
+
+    .input{
+      border:1px solid rgba(11,27,51,0.18);
+      background: rgba(255,255,255,0.70);
+      border-radius:12px;
+      padding:8px 10px;
+      min-width:240px;
+      outline:none;
+    }
+    .input:focus{border-color: rgba(43,108,176,0.55);}
+
+    .table-wrap{
+      overflow-x:auto;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.72);
+      box-shadow: var(--shadow);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width: 860px;
+    }
+
+    thead th{
+      text-align:left;
+      font-size:13px;
+      letter-spacing:0.02em;
+      color:var(--muted);
+      background: rgba(234,243,255,0.95);
+      padding:12px 12px;
+      border-bottom:1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tbody td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(11,27,51,0.10);
+      vertical-align:top;
+      font-size:14px;
+    }
+
+    tbody tr:hover{background: rgba(234,243,255,0.55);}
+
+    .pill{
+      display:inline-block;
+      padding:3px 10px;
+      border-radius:999px;
+      background: rgba(43,108,176,0.10);
+      color: var(--accent2);
+      border: 1px solid rgba(43,108,176,0.25);
+      font-size:12px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .topics{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:10px;
+      margin-top:10px;
+    }
+    @media (max-width: 700px){
+      .topics{grid-template-columns:1fr;}
+    }
+    .topic{
+      border:1px solid rgba(11,27,51,0.14);
+      background: rgba(255,255,255,0.65);
+      border-radius:14px;
+      padding:12px 12px;
+      box-shadow: 0 8px 20px rgba(11,27,51,0.08);
+    }
+
+    footer{
+      padding:22px 0 40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    code{
+      background: rgba(255,255,255,0.65);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(11,27,51,0.12);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="title">Heavy-Ion Collision Phenomenology Journal Club</h1>
+      <p class="subtitle">Winter 2026 · Department of Physics and Astronomy · Wayne State University</p>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>About the Club</h2>
+        <p>
+          The <strong>Heavy-Ion Collision Phenomenology Journal Club</strong> meets weekly to discuss relevant topics in
+          heavy-ion collision (HIC) physics, with an emphasis on <strong>recent developments</strong> and
+          <strong>new advances</strong> in the field.
+        </p>
+        <p>
+          Each week, a member presents a paper or theme, followed by a <strong>Q&amp;A</strong> and a
+          <strong>discussion session</strong>.
+        </p>
+
+        <h2 style="margin-top:16px;">What to Expect</h2>
+        <ul>
+          <li>Weekly presentations on recent HIC phenomenology papers</li>
+          <li>Focused discussion and follow-up questions</li>
+          <li>Open environment for learning and collaboration</li>
+        </ul>
+      </section>
+
+      <aside class="card">
+        <h2>Meeting Details</h2>
+        <div class="info">
+          <div class="row">
+            <span class="badge">WHEN</span>
+            <div>
+              <div><strong>Fridays</strong>, 3:00 PM – 4:00 PM</div>
+              <div class="muted">Weekly (Winter 2026)</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="badge">WHERE</span>
+            <div>
+              <div><strong>Room 312</strong>, Physics Building</div>
+              <div class="muted">Wayne State University</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="badge">HOST</span>
+            <div>
+              <div><strong>Department of Physics and Astronomy</strong></div>
+              <div class="muted">Wayne State University</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top:14px;">
+          Add arXiv/DOI links in the schedule table — they will be clickable.
+        </p>
+      </aside>
+    </div>
+
+    <!-- Schedule Section -->
+    <section class="section">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <h2 style="margin:0;">Schedule / Speakers / Papers</h2>
+          <span class="muted">Click links to open papers</span>
+        </div>
+
+        <div class="toolbar-left">
+          <input id="searchInput" class="input" type="text" placeholder="Search schedule (speaker, topic, paper)..." />
+          <button id="addRowBtn" class="btn" type="button">+ Add new row</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="scheduleTable">
+          <thead>
+            <tr>
+              <th style="width:160px;">Date</th>
+              <th style="width:180px;">Speaker</th>
+              <th>Topic</th>
+              <th style="width:260px;">Paper / Link</th>
+              <th style="width:140px;">Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="scheduleBody">
+            <tr>
+              <td>Jan 30, 2026</td>
+              <td>TBD</td>
+              <td>Kickoff + overview of Winter 2026 themes</td>
+              <td class="muted">—</td>
+              <td><span class="pill">Open</span></td>
+            </tr>
+
+            <tr>
+              <td>Feb 6, 2026</td>
+              <td>TBD</td>
+              <td>Recent developments in initial-state modeling</td>
+              <td class="muted">—</td>
+              <td><span class="pill">Open</span></td>
+            </tr>
+
+            <tr>
+              <td>Feb 13, 2026</td>
+              <td>TBD</td>
+              <td>Spin / polarization observables in HIC</td>
+              <td class="muted">—</td>
+              <td><span class="pill">Open</span></td>
+            </tr>
+
+            <tr>
+              <td>Feb 20, 2026</td>
+              <td>TBD</td>
+              <td>Hydro + transport hybrid approaches</td>
+              <td class="muted">—</td>
+              <td><span class="pill">Open</span></td>
+            </tr>
+
+            <tr>
+              <td>Feb 27, 2026</td>
+              <td>TBD</td>
+              <td>Jet quenching phenomenology (recent constraints)</td>
+              <td class="muted">—</td>
+              <td><span class="pill">Open</span></td>
+            </tr>
+
+            <!-- Example with a clickable paper link (replace with a real one) -->
+            <tr>
+              <td>Mar 6, 2026</td>
+              <td>TBD</td>
+              <td>Example row with a clickable paper link</td>
+              <td>
+                <a class="smalllink" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer">
+                  arXiv link (replace)
+                </a>
+              </td>
+              <td><span class="pill">Open</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="muted" style="margin-top:10px;">
+        Tip: To add a paper link, edit the cell like:
+        <code>&lt;a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank"&gt;arXiv:XXXX.XXXXX&lt;/a&gt;</code>
+      </p>
+    </section>
+
+    <!-- Suggested Topics -->
+    <section class="section">
+      <h2 style="margin:0 0 8px;">Suggested Topics</h2>
+      <p class="muted" style="margin:0 0 10px;">
+        Click a topic to open a starting point (arXiv category, review, or experiment page).
+      </p>
+
+      <div class="topics">
+        <div class="topic">
+          <a href="https://arxiv.org/list/nucl-th/recent" target="_blank" rel="noopener noreferrer">
+            Recent nucl-th papers (arXiv)
+          </a>
+          <div class="muted">Browse new theory papers relevant to HIC phenomenology.</div>
+        </div>
+
+        <div class="topic">
+          <a href="https://arxiv.org/list/hep-ph/recent" target="_blank" rel="noopener noreferrer">
+            Recent hep-ph papers (arXiv)
+          </a>
+          <div class="muted">Phenomenology developments often appear here.</div>
+        </div>
+
+        <div class="topic">
+          <a href="https://arxiv.org/search/?query=hydrodynamics+heavy-ion&searchtype=all&source=header"
+             target="_blank" rel="noopener noreferrer">
+            Relativistic hydrodynamics in HIC (arXiv search)
+          </a>
+          <div class="muted">Hydro modeling, transport coefficients, initial conditions.</div>
+        </div>
+
+        <div class="topic">
+          <a href="https://arxiv.org/search/?query=spin+polarization+heavy-ion&searchtype=all&source=header"
+             target="_blank" rel="noopener noreferrer">
+            Spin / polarization in heavy-ion collisions (arXiv search)
+          </a>
+          <div class="muted">Global polarization, vorticity, Wigner functions.</div>
+        </div>
+
+        <div class="topic">
+          <a href="https://arxiv.org/search/?query=jet+quenching+heavy-ion&searchtype=all&source=header"
+             target="_blank" rel="noopener noreferrer">
+            Jet quenching phenomenology (arXiv search)
+          </a>
+          <div class="muted">Energy loss, medium response, constraints from data.</div>
+        </div>
+
+        <div class="topic">
+          <a href="https://arxiv.org/search/?query=initial+state+heavy-ion+glasma&searchtype=all&source=header"
+             target="_blank" rel="noopener noreferrer">
+            Initial state / Glasma / CGC (arXiv search)
+          </a>
+          <div class="muted">Pre-equilibrium, saturation, initial fluctuations.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © Winter 2026 · Heavy-Ion Collision Phenomenology Journal Club · Wayne State University
+    </footer>
+  </div>
+
+  <script>
+    // Simple client-side "extendable" table:
+    // - Add a new row with placeholders
+    // - Search/filter rows by text
+    const scheduleBody = document.getElementById("scheduleBody");
+    const addRowBtn = document.getElementById("addRowBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    addRowBtn.addEventListener("click", () => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>TBD</td>
+        <td>TBD</td>
+        <td>TBD</td>
+        <td>
+          <a class="smalllink" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer">
+            Add paper link
+          </a>
+        </td>
+        <td><span class="pill">Open</span></td>
+      `;
+      scheduleBody.appendChild(tr);
+    });
+
+    searchInput.addEventListener("input", () => {
+      const q = searchInput.value.toLowerCase().trim();
+      const rows = Array.from(scheduleBody.querySelectorAll("tr"));
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(q) ? "" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
