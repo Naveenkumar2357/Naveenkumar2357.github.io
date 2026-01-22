@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================================================
+       (1) META + TITLE
+       ========================================================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heavy-Ion Collision Phenomenology Journal Club — Winter 2026</title>
 
+  <!-- =========================================================
+       (2) STYLES (PALE BLUE THEME + BACKGROUND IMAGE)
+       Put chun.jpeg in the same folder as this index.html
+       ========================================================= -->
   <style>
     :root{
       --bg1:#eaf3ff;
@@ -34,7 +41,6 @@
     }
 
     .wrap{max-width:1050px;margin:0 auto;padding:24px;}
-
     header{padding:54px 0 16px;}
 
     .title{
@@ -77,10 +83,9 @@
 
     p{margin:0 0 12px;}
     .muted{color:var(--muted)}
-    ul{margin:10px 0 0 18px;}
 
+    /* Meeting details blocks */
     .info{display:grid;gap:10px;margin-top:8px;}
-
     .row{
       display:flex;
       gap:10px;
@@ -90,7 +95,6 @@
       border-radius:14px;
       background: rgba(255,255,255,0.55);
     }
-
     .badge{
       flex:0 0 auto;
       font-size:12px;
@@ -109,9 +113,10 @@
     .smalllink{font-weight:600;color:var(--accent2)}
     .smalllink:hover{color:var(--accent);}
 
-    /* Table + controls */
+    /* Sections */
     .section{margin-top:18px;}
 
+    /* Toolbar (search only) */
     .toolbar{
       display:flex;
       flex-wrap:wrap;
@@ -120,26 +125,12 @@
       justify-content:space-between;
       margin:0 0 10px;
     }
-
     .toolbar-left{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
       align-items:center;
     }
-
-    .btn{
-      appearance:none;
-      border:1px solid rgba(43,108,176,0.35);
-      background: rgba(43,108,176,0.12);
-      color: var(--accent2);
-      padding:8px 12px;
-      border-radius:12px;
-      font-weight:700;
-      cursor:pointer;
-    }
-    .btn:hover{background: rgba(43,108,176,0.18);}
-
     .input{
       border:1px solid rgba(11,27,51,0.18);
       background: rgba(255,255,255,0.70);
@@ -150,6 +141,7 @@
     }
     .input:focus{border-color: rgba(43,108,176,0.55);}
 
+    /* Table */
     .table-wrap{
       overflow-x:auto;
       border-radius:16px;
@@ -157,13 +149,11 @@
       background: rgba(255,255,255,0.72);
       box-shadow: var(--shadow);
     }
-
     table{
       width:100%;
       border-collapse:collapse;
       min-width: 860px;
     }
-
     thead th{
       text-align:left;
       font-size:13px;
@@ -176,14 +166,12 @@
       top: 0;
       z-index: 1;
     }
-
     tbody td{
       padding:12px 12px;
       border-bottom:1px solid rgba(11,27,51,0.10);
       vertical-align:top;
       font-size:14px;
     }
-
     tbody tr:hover{background: rgba(234,243,255,0.55);}
 
     .pill{
@@ -198,6 +186,7 @@
       white-space:nowrap;
     }
 
+    /* Suggested topics cards */
     .topics{
       display:grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -232,12 +221,22 @@
 
 <body>
   <div class="wrap">
+
+    <!-- =========================================================
+         (3) HEADER / TITLE
+         ========================================================= -->
     <header>
       <h1 class="title">Heavy-Ion Collision Phenomenology Journal Club</h1>
       <p class="subtitle">Winter 2026 · Department of Physics and Astronomy · Wayne State University</p>
     </header>
 
+    <!-- =========================================================
+         (4) TOP GRID: ABOUT + MEETING DETAILS
+         - Removed "What to Expect"
+         - Removed "HOST"
+         ========================================================= -->
     <div class="grid">
+      <!-- (4A) ABOUT CARD -->
       <section class="card">
         <h2>About the Club</h2>
         <p>
@@ -249,15 +248,9 @@
           Each week, a member presents a paper or theme, followed by a <strong>Q&amp;A</strong> and a
           <strong>discussion session</strong>.
         </p>
-
-        <h2 style="margin-top:16px;">What to Expect</h2>
-        <ul>
-          <li>Weekly presentations on recent HIC phenomenology papers</li>
-          <li>Focused discussion and follow-up questions</li>
-          <li>Open environment for learning and collaboration</li>
-        </ul>
       </section>
 
+      <!-- (4B) MEETING DETAILS CARD -->
       <aside class="card">
         <h2>Meeting Details</h2>
         <div class="info">
@@ -276,33 +269,26 @@
               <div class="muted">Wayne State University</div>
             </div>
           </div>
-
-          <div class="row">
-            <span class="badge">HOST</span>
-            <div>
-              <div><strong>Department of Physics and Astronomy</strong></div>
-              <div class="muted">Wayne State University</div>
-            </div>
-          </div>
         </div>
-
-        <p class="muted" style="margin-top:14px;">
-          Add arXiv/DOI links in the schedule table — they will be clickable.
-        </p>
       </aside>
     </div>
 
-    <!-- Schedule Section -->
+    <!-- =========================================================
+         (5) SCHEDULE TABLE SECTION
+         - Title changed to "Schedule"
+         - Removed "Click links to open papers"
+         - Removed "+ Add new row" button
+         - "Topic" is now clickable
+         - Column "Paper / Link" renamed to "Slides"
+         ========================================================= -->
     <section class="section">
       <div class="toolbar">
         <div class="toolbar-left">
-          <h2 style="margin:0;">Schedule / Speakers / Papers</h2>
-          <span class="muted">Click links to open papers</span>
+          <h2 style="margin:0;">Schedule</h2>
         </div>
 
         <div class="toolbar-left">
-          <input id="searchInput" class="input" type="text" placeholder="Search schedule (speaker, topic, paper)..." />
-          <button id="addRowBtn" class="btn" type="button">+ Add new row</button>
+          <input id="searchInput" class="input" type="text" placeholder="Search schedule (speaker, topic, slides)..." />
         </div>
       </div>
 
@@ -313,16 +299,25 @@
               <th style="width:160px;">Date</th>
               <th style="width:180px;">Speaker</th>
               <th>Topic</th>
-              <th style="width:260px;">Paper / Link</th>
+              <th style="width:260px;">Slides</th>
               <th style="width:140px;">Status</th>
             </tr>
           </thead>
 
+          <!-- ====== EDIT SCHEDULE ROWS HERE ======
+               For each row:
+               - Put the topic link in the Topic column (href=...)
+               - Put your slide link (PDF/Google Slides) in Slides column
+          -->
           <tbody id="scheduleBody">
             <tr>
               <td>Jan 30, 2026</td>
               <td>TBD</td>
-              <td>Kickoff + overview of Winter 2026 themes</td>
+              <td>
+                <a class="smalllink" href="#" target="_blank" rel="noopener noreferrer">
+                  Kickoff + overview of Winter 2026 themes
+                </a>
+              </td>
               <td class="muted">—</td>
               <td><span class="pill">Open</span></td>
             </tr>
@@ -330,7 +325,11 @@
             <tr>
               <td>Feb 6, 2026</td>
               <td>TBD</td>
-              <td>Recent developments in initial-state modeling</td>
+              <td>
+                <a class="smalllink" href="#" target="_blank" rel="noopener noreferrer">
+                  Recent developments in initial-state modeling
+                </a>
+              </td>
               <td class="muted">—</td>
               <td><span class="pill">Open</span></td>
             </tr>
@@ -338,54 +337,49 @@
             <tr>
               <td>Feb 13, 2026</td>
               <td>TBD</td>
-              <td>Spin / polarization observables in HIC</td>
+              <td>
+                <a class="smalllink" href="#" target="_blank" rel="noopener noreferrer">
+                  Spin / polarization observables in HIC
+                </a>
+              </td>
               <td class="muted">—</td>
               <td><span class="pill">Open</span></td>
             </tr>
 
-            <tr>
-              <td>Feb 20, 2026</td>
-              <td>TBD</td>
-              <td>Hydro + transport hybrid approaches</td>
-              <td class="muted">—</td>
-              <td><span class="pill">Open</span></td>
-            </tr>
-
-            <tr>
-              <td>Feb 27, 2026</td>
-              <td>TBD</td>
-              <td>Jet quenching phenomenology (recent constraints)</td>
-              <td class="muted">—</td>
-              <td><span class="pill">Open</span></td>
-            </tr>
-
-            <!-- Example with a clickable paper link (replace with a real one) -->
             <tr>
               <td>Mar 6, 2026</td>
               <td>TBD</td>
-              <td>Example row with a clickable paper link</td>
               <td>
-                <a class="smalllink" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer">
-                  arXiv link (replace)
+                <a class="smalllink" href="https://arxiv.org/abs/2101.00001" target="_blank" rel="noopener noreferrer">
+                  Example topic (clickable)
+                </a>
+              </td>
+              <td>
+                <a class="smalllink" href="https://arxiv.org/abs/2101.00001" target="_blank" rel="noopener noreferrer">
+                  Slides (replace with link)
                 </a>
               </td>
               <td><span class="pill">Open</span></td>
             </tr>
           </tbody>
+          <!-- ====== END SCHEDULE ROWS ====== -->
+
         </table>
       </div>
 
       <p class="muted" style="margin-top:10px;">
-        Tip: To add a paper link, edit the cell like:
-        <code>&lt;a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank"&gt;arXiv:XXXX.XXXXX&lt;/a&gt;</code>
+        To add a link: use
+        <code>&lt;a href="https://..." target="_blank"&gt;Text&lt;/a&gt;</code>
       </p>
     </section>
 
-    <!-- Suggested Topics -->
+    <!-- =========================================================
+         (6) SUGGESTED TOPICS SECTION (CLICKABLE LINKS)
+         ========================================================= -->
     <section class="section">
       <h2 style="margin:0 0 8px;">Suggested Topics</h2>
       <p class="muted" style="margin:0 0 10px;">
-        Click a topic to open a starting point (arXiv category, review, or experiment page).
+        Click a topic to open a starting point (arXiv category, review, or search).
       </p>
 
       <div class="topics">
@@ -414,7 +408,7 @@
         <div class="topic">
           <a href="https://arxiv.org/search/?query=spin+polarization+heavy-ion&searchtype=all&source=header"
              target="_blank" rel="noopener noreferrer">
-            Spin / polarization in heavy-ion collisions (arXiv search)
+            Spin / polarization in HIC (arXiv search)
           </a>
           <div class="muted">Global polarization, vorticity, Wigner functions.</div>
         </div>
@@ -437,34 +431,21 @@
       </div>
     </section>
 
+    <!-- =========================================================
+         (7) FOOTER
+         ========================================================= -->
     <footer>
       © Winter 2026 · Heavy-Ion Collision Phenomenology Journal Club · Wayne State University
     </footer>
   </div>
 
+  <!-- =========================================================
+       (8) JAVASCRIPT
+       - Search / filter rows only
+       ========================================================= -->
   <script>
-    // Simple client-side "extendable" table:
-    // - Add a new row with placeholders
-    // - Search/filter rows by text
     const scheduleBody = document.getElementById("scheduleBody");
-    const addRowBtn = document.getElementById("addRowBtn");
     const searchInput = document.getElementById("searchInput");
-
-    addRowBtn.addEventListener("click", () => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>TBD</td>
-        <td>TBD</td>
-        <td>TBD</td>
-        <td>
-          <a class="smalllink" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer">
-            Add paper link
-          </a>
-        </td>
-        <td><span class="pill">Open</span></td>
-      `;
-      scheduleBody.appendChild(tr);
-    });
 
     searchInput.addEventListener("input", () => {
       const q = searchInput.value.toLowerCase().trim();
